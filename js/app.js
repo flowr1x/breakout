@@ -8,8 +8,8 @@ class App {
     constructor(container) {
         this.layer = new Layer(container);
         this.brick = new Brick(this.layer.width / 11, 15, this.layer);
-        this.ball = new Ball(this.layer, this.brick);
         this.player = new Player(this.layer);
+        this.ball = new Ball(this.layer, this.brick, this.player);
 
         this.loop = new Loop(this.ball, this.brick, this.layer, this.player);
     }

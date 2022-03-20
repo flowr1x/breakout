@@ -1,12 +1,13 @@
 export class Ball {
-    constructor(layer, brick) {
+    constructor(layer, brick, player) {
         this.layer = layer;
         this.brick = brick;
+        this.player = player;
 
         this.configBall = {
             x: this.layer.width / 2,
             y: this.layer.height / 2 + 70,
-            vx: 0,
+            vx: 2,
             vy: 2,
             radius: 5,
         };
@@ -50,6 +51,15 @@ export class Ball {
                 this.configBall.vy = -vy;  
                 break;
             } 
+        }
+
+        const {x: playerX, y: playerY, w: playerW, h: playerH} = this.player.configPlayer;
+        if (playerX < ballX + sizeBall &&
+            ballX - sizeBall < playerX + playerW && 
+            playerY < ballY + sizeBall &&
+            ballY - sizeBall < playerY + playerH)
+            { 
+                this.configBall.vy = -vy; 
         }
     }
 }

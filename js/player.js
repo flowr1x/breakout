@@ -8,6 +8,8 @@ export class Player {
         }
         this.configPlayer.x = (this.layer.width - this.configPlayer.w) / 2;
         this.configPlayer.y = this.layer.height - 20;
+
+        addEventListener("keydown", this.keyDownButton.bind(this));
     }
 
     drawPlayer({x, y, h, w}) {
@@ -19,20 +21,16 @@ export class Player {
         this.layer.ctx.strokeRect(x, y, w, h);
     }
 
-    updatePlayer() {
-        addEventListener("keydown", this.keyDownButton.bind(this));
-    }
-
     keyDownButton(event) {
         switch(event.keyCode) {
             case 37:   
                 if (this.configPlayer.x > 0)
-                    this.configPlayer.x -= 0.025; 
+                    this.configPlayer.x -= 10; 
                 break;
             
             case 39: 
                 if (this.configPlayer.x < this.layer.width - this.configPlayer.w)
-                    this.configPlayer.x += 0.025; 
+                    this.configPlayer.x += 10; 
                 break;
         }
     }

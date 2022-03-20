@@ -17,10 +17,10 @@ export class Loop {
 
     update() {
         this.ball.updateBall();
-        this.player.updatePlayer();
+        
     }
 
-    gameLoop() {
+    gameLoop(currentTime = 0) {
         this.layer.ctx.clearRect(0, 0, this.layer.width, this.layer.height);
         requestAnimationFrame(this.loop);
 
